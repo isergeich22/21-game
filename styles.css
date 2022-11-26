@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=EB+Garamond&display=swap');
+
+:root {
+    --main-font: 'Alfa Slab One', cursive;
+    --button-font: 'EB Garamond', serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.player-1, .player-2 {
+    font-family: var(--main-font);
+    font-size: 1rem;
+    width: 40%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 15px 25px;
+}
+
+    .player-1 h2, .player-2 h2 {
+        font-size: 2rem;
+        color: rgb(113, 113, 255);
+    }
+
+        .player-2 h2 {
+            color: rgb(255, 113, 113);
+        }
+
+    .player-1 .activity, .player-2 .activity {
+        padding: 20px 27px;
+        display: flex;
+        gap: 10%;
+        justify-content: center;
+    }
+
+    .player-1 .points {
+        font-family: var(--main-font);
+        font-size: 1.5rem;
+        margin: 0 auto;
+        text-align: center;
+        width: 40%;
+    }
+
+        .points .card-1 {
+            color: rgb(113, 113, 255);
+        }
+
+        .points .card-2 {
+            color: rgb(255, 113, 113);
+        }
+
+    .player-1 .activity {
+        display: none;
+    }
+
+        .activity .more, .activity .enough {
+            border: none;
+            font-family: var(--button-font);
+            background-color: #fff;
+            color: #666666;
+            width: 30%;
+            height: 50px;
+            font-size: 1.3rem;
+            border: 1px solid #666666;            
+            border-radius: 20px;
+            transition: .5s ease-in;
+        }
+
+        .activity .more:hover, .activity .enough:hover {
+            background-color: #666666;
+            color: #fff;
+            border: none;
+            transition: .5s ease-in;
+        }
+
+.start, .again {
+    font-family: var(--main-font);
+    font-size: 1.5rem;
+    margin: 0 auto;
+    text-align: center;
+    width: 40%;
+}
+
+    .start button {
+        border: 1px solid rgb(113, 113, 255);
+        font-family: var(--main-font);
+        font-size: 1rem;
+        width: 20%;
+        background-color: #fff;
+        color: rgb(113, 113, 255);
+        border-radius: 5px;
+    }
+
+        .start button:hover {
+            border: none;
+            color:#fff;
+            background-color: rgb(113, 113, 255);
+        }
+
+    .again button {
+        display: none;
+        border: 1px solid rgb(255, 113, 113);
+        font-family: var(--main-font);
+        font-size: 1rem;
+        width: 20%;
+        background-color: #fff;   
+        color: rgb(255, 113, 113);
+        border-radius: 5px;
+    }
+
+        .again button:hover {
+            border: none;
+            color:#fff;
+            background-color: rgb(255, 113, 113);
+        }
+
+.result {
+    font-family: var(--main-font);
+    font-size: 1.5rem;
+    margin: 0 auto;
+    text-align: center;
+    width: 40%;   
+}
+
+    .result h4 {
+        color: #666666;
+    }
+
+        .result .points-first {
+            color: rgb(113, 113, 255);
+        }
+
+        .result .points-second {
+            color: rgb(255, 113, 113);
+        }
+
+        .result .winner-1 {
+            color: rgb(113, 113, 255);
+        }
+
+        .result .winner-2 {
+            color: rgb(255, 113, 113);
+        }
+
+.player-2 #points-2 {
+    display: none;
+}
