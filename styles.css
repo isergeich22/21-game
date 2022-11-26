@@ -148,3 +148,43 @@
 .player-2 #points-2 {
     display: none;
 }
+
+@media screen and (max-width: 500px) {
+
+        .player-1 h2, .player-2 h2 {
+            font-size: 1rem;
+        }
+
+        .start, .again {
+            width: 100%;
+        }
+        
+            .start button {
+                font-size: .7rem;                
+            }
+        
+            .again button {
+                font-size: .7rem;
+            }
+
+        .player-1 .activity {
+            width: 100%;
+        }
+
+        .activity .more, .activity .enough {
+            width: 1000%;
+            height: 20px;
+            font-size: .5rem;
+            padding: 0 15px;
+        }
+
+    .player-1 .points {
+        font-size: 1rem;
+        width: 100%;
+    }
+
+    .result {
+        font-size: 1rem;
+    }
+    
+}
