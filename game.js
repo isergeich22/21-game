@@ -9,9 +9,12 @@ const enough = document.querySelector('#enough')
 const points_1 = document.querySelector('#points-1')
 const points_2 = document.querySelector('#points-2')
 
+const cards = document.querySelector('#cards')
+const end = document.querySelector('#endgame')
+
 const winner = document.querySelector('#winner')
 
-zeroSignalCount = 0
+zeroSignalCount = 3
 count_1 = 0
 count_2 = 0
 
@@ -23,17 +26,23 @@ again.addEventListener('click', () => {
     winner.innerHTML = ''
     count_1 = 0
     count_2 = 0
+    end.innerHTML = ''
     startGame()
 })
 
 function startGame() {
+    zeroSignalCount = 3
     activity.style.display = 'flex'
     start.style.display = 'none'
     again.style.display = 'none'
+    cards.style.display = 'block'
     addPoints(1)
     addPoints(1)
     addPoints(2)
+    drawCard()
     addPoints(2)
+    drawCard()
+
     if(count_1 == 21) endGame(1)
     if(count_2 == 21) endGame(2)
 
@@ -45,19 +54,23 @@ more.addEventListener('click', () => {
 
     addPoints(1)
 
-    if(count_2 < 15) {addPoints(2)} else if(count_2 > 15 && count_2 < 17){
+    if(count_2 < 15) {addPoints(2); drawCard()} else if(count_2 > 15 && count_2 < 17){
         signal = getRandomInt(0,1)
-        if(signal == 1) {addPoints(2)} else {
+        if(signal == 1) {addPoints(2); drawCard()} else {
            
-            zeroSignalCount++
-            if(zeroSignalCount == 3) {
+            zeroSignalCount--
+            console.log(zeroSignalCount)
+            end.innerHTML = `${zeroSignalCount} to end`
+            if(zeroSignalCount == 0) {
                 count_1 > count_2 ? endGame(1) : endGame(2)
             }
 
         }
     } else {
-        zeroSignalCount++
-            if(zeroSignalCount == 3) {
+        zeroSignalCount--
+        console.log(zeroSignalCount)
+        end.innerHTML = `${zeroSignalCount} to end`
+            if(zeroSignalCount == 0) {
                 count_1 > count_2 ? endGame(1) : endGame(2)
             }
     }
@@ -72,19 +85,23 @@ more.addEventListener('click', () => {
 
 enough.addEventListener('click', () => {
 
-    if(count_2 < 15) {addPoints(2)} else if(count_2 > 15 && count_2 < 17){
+    if(count_2 < 15) {addPoints(2); drawCard()} else if(count_2 > 15 && count_2 < 17){
         signal = getRandomInt(0,1)
-        if(signal == 1) {addPoints(2)} else {
+        if(signal == 1) {addPoints(2); drawCard()} else {
            
-            zeroSignalCount++
-            if(zeroSignalCount == 3) {
+            zeroSignalCount--
+            end.innerHTML = `${zeroSignalCount} to end`
+            console.log(zeroSignalCount)
+            if(zeroSignalCount == 0) {
                 count_1 > count_2 ? endGame(1) : endGame(2)
             }
 
         }
     } else {
-        zeroSignalCount++
-            if(zeroSignalCount == 3) {
+        zeroSignalCount--
+        end.innerHTML = `${zeroSignalCount} to end`
+        console.log(zeroSignalCount)
+            if(zeroSignalCount == 0) {
                 count_1 > count_2 ? endGame(1) : endGame(2)
             }
     }
@@ -144,6 +161,8 @@ function endGame(win) {
         points_2.style.display = 'block'
         activity.style.display = 'none'
         again.style.display = 'inline-block'
+        cards.style.display = 'none'
+        cards.innerHTML = ''
     
 }
 
@@ -151,4 +170,10 @@ function getRandomInt(min, max) {
     min = Math.ceil(min)
     max = Math.floor(max)
     return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
+function drawCard() {
+    let span = document.createElement('span')
+    span.innerHTML = '| x |'
+    cards.append(span)
 }
